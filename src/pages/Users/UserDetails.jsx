@@ -32,7 +32,11 @@ const UserDetails = () => {
 
   return (
       <div className='userDetails'> 
-    {isLoading ? <BounceLoader /> :
+    {isLoading ? 
+        <div className="loader">
+            <BounceLoader loading color="#213F7D" />
+        </div>
+    :
     <>
         <div>
             <p className='backButton'>
