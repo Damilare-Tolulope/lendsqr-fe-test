@@ -3,7 +3,7 @@ import more from '../assets/images/icons/more.svg'
 import filter from '../assets/images/icons/filter.svg'
 import moment from 'moment'
 import { usePopper } from 'react-popper'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Table = ({headings, bodyData}) => {
         const [popperElement, setPopperElement] = useState(null);
@@ -12,13 +12,10 @@ const Table = ({headings, bodyData}) => {
     
         const [isOpen, setIsOpen] = useState(false);
         const domNode = useRef();
-        // useOnClickOutside(domNode, () => {
-        //     setIsOpen(false);
-        // });
-    
-        // const navigate = useNavigate();
-    
         const [showModal, setshowModal] = useState(false);
+
+        const navigate = useNavigate();
+    
         const open = () => {
             document.body.style.overflow = "hidden";
             setshowModal(true);
@@ -27,55 +24,6 @@ const Table = ({headings, bodyData}) => {
             setshowModal(false);
             document.body.style.overflow = "scroll";
         };
-        // return (
-        //     <span onClick={() => setIsOpen(prev => !prev)} style={{ position: "relative" }}>
-        //         <div className="three-dot" ref={setReferrenceElement}>
-        //             <span className="three-dot">
-        //                 <FaEllipsisH />
-        //             </span>
-        //         </div>
-        //         {showModal && <Modal close={close} modalJsx={<UploadPhotoModal close={close} img1={value} />} heading_text="Documents" />}
-    
-        //         {isOpen && (
-        //             <div ref={domNode}>
-        //                 <ul
-        //                     className="ra absolute z-20 bg-white shadow-lg rounded-md"
-        //                     ref={setPopperElement}
-        //                     {...attributes.popper}
-        //                     style={{ ...styles.popper, position: "absolute", zIndex: "30", background: "#fff", marginTop: "1rem", padding: "1rem" }}>
-        //                     {/* <li className="mb-1">
-        //                     <span className="hard" onClick={ () => {
-        //                        navigate("/investors/a")
-        //                     }}><img src={eye} alt="eyeIcon"/>VIEW DETAILS</span>
-        //                 </li> */}
-        //                     <li className="mb-1">
-        //                         <span
-        //                             className="hard"
-        //                             onClick={() => {
-        //                                 open();
-        //                             }}>
-        //                             {" "}
-        //                             <img src={eye} alt="emailIcon" />
-        //                             VIEW DOCS
-        //                         </span>
-        //                     </li>
-        //                     <li className="mb-1">
-        //                         <span className="hard">
-        //                             <img src={double_arrow} alt="eyeIcon" />
-        //                             APPROVE
-        //                         </span>
-        //                     </li>
-        //                     <li className="mb-1">
-        //                         <span className="hard">
-        //                             <img src={cross} alt="eyeIcon" />
-        //                             REJECT
-        //                         </span>
-        //                     </li>
-        //                 </ul>
-        //             </div>
-        //         )}
-        //     </span>
-        // );
 
   return (
     <>
@@ -91,8 +39,7 @@ const Table = ({headings, bodyData}) => {
                 {
                     bodyData.map(({orgName, userName, email, phoneNumber, createdAt, id }, index) => {
                         return (
-                            <Link to={`/${id}`}>
-                            <tr key={id}>
+                            <tr onClick={() => navigate(`/${id}`)} key={id}>
                                 <td>{orgName}</td>
                                 <td>{userName}</td>
                                 <td>{email}</td>
@@ -101,7 +48,6 @@ const Table = ({headings, bodyData}) => {
                                 <td>Pending</td>
                                 <td><img ref={setReferrenceElement} src={more} alt="more" /></td>
                             </tr>
-                            </Link>
                         )
                     })}
             </tbody>
