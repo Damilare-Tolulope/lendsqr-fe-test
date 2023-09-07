@@ -1,5 +1,4 @@
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-    const maxPage = 5
     const handleNextPage = () => {
       if (currentPage < totalPages) {
         onPageChange(currentPage + 1);
@@ -12,6 +11,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       }
     };
 
+    const setPage = (page) => onPageChange(page);
+
     return (
       <div className="pagination">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
@@ -20,7 +21,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
         <div className="pagination-pages">
             {
-                [...Array(totalPages)].map((page, index) => <p key={index} className={`${(index + 1) === currentPage ? "selected" : ""}`}>{index + 1}</p>)
+                [...Array(totalPages)].map((page, index) => <p onClick={() => setPage(index + 1)} key={index} className={`${(index + 1) === currentPage ? "selected" : ""}`}>{index + 1}</p>)
             }
         </div>
         
