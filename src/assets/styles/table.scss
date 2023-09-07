@@ -1,9 +1,9 @@
 table{
     width: 100%;
     background-color: #fff;
-    border-radius: 6px;
-    border: 1px solid rgba(33, 63, 125, 0.06);
-    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 6px 6px 0px 0px;
+    border: 1px solid #213f7d0f;
+    box-shadow: 3px 5px 20px #0000000a;
     padding: 20px;
     // table-layout: fixed;
     
@@ -74,5 +74,46 @@ table{
     ul .selected {
         color: #6e61e7;
         font-weight: 700;
+    }
+}
+
+.pagination {
+    background-color: #fff;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    padding: 10px;
+
+    button {
+        padding: 8px 16px;
+        cursor: pointer;
+        border: 1px solid #6e61e7;
+        border-radius: 6px;
+    }
+    button:hover {
+        background-color: #6e61e7;
+        color: #fff;
+    }
+
+    p {
+        border-radius: 6px;
+        border: 1px solid #213f7d0f;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin: 0 2px;
+        cursor: pointer;
+        transition: linear all 0.3s ease;
+    }
+    p:hover {
+        transition: linear all 0.3s ease;
+        background-color: #6e61e7;
+        color: #fff;
+    }
+    p.selected {
+        color: #fff;
+        background-color: #6e61e7;
     }
 }
