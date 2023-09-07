@@ -76,7 +76,6 @@ const Table = ({headings, bodyData}) => {
     <div ref={setPopperElement} {...attributes.popper}
         style={{ ...styles.popper, position: "absolute", zIndex: "30", background: "#fff", marginTop: "1rem", padding: "1rem" }}
     >
-        Popper Element
     </div>
     </>
   )

@@ -116,4 +116,12 @@ table{
         color: #fff;
         background-color: #6e61e7;
     }
+
+    .pagination-pages {
+        display: flex;
+        align-items: center;
+        max-width: 220px;
+        overflow: hidden;
+        overflow-x: auto;
+    }
 }

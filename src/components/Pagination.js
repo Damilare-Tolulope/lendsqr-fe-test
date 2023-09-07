@@ -18,15 +18,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           Prev
         </button>
 
-        {
-            totalPages > maxPage ?
-            <>
-                {[...Array(totalPages)].slice(0, maxPage).map((page, index) => <p key={index} className={`${(index + 1) === currentPage ? "selected" : ""}`}>{index + 1}</p>)}
-                ...
-            </>
-            :
-            [...Array(totalPages)].map((page, index) => <p key={index} className={`${(index + 1) === currentPage ? "selected" : ""}`}>{index + 1}</p>)
-        }
+        <div className="pagination-pages">
+            {
+                [...Array(totalPages)].map((page, index) => <p key={index} className={`${(index + 1) === currentPage ? "selected" : ""}`}>{index + 1}</p>)
+            }
+        </div>
         
         <button onClick={handleNextPage} disabled={currentPage === totalPages}>
           Next
