@@ -1,14 +1,18 @@
 
 import { useEffect, useState } from 'react'
-import { cardData } from '../../common/CardData'
 import Card from '../../components/Card'
 import Table from '../../components/Table'
 import { getRequest } from '../../utils/Api'
 import withScrollToTop from '../../utils/WithScrollToTop.'
 
+import img1 from '../../assets/images/icons/user.svg';
+import img2 from '../../assets/images/icons/users.svg';
+import img3 from '../../assets/images/icons/loans.svg';
+import img4 from '../../assets/images/icons/savings.svg';
+import moment from 'moment'
+
 const Users = () => {
   const [userData, setUserData] = useState([]);
-  const [dataCards] = useState(cardData);
 
   const fetchData = () => {
     try{
@@ -21,11 +25,37 @@ const Users = () => {
     }
   }
 
+  const currentDate = moment();
 
   const headings = [
     'Organization', 'username', 'email', 'phone number', 'date joined',
-  ]
+  ];
 
+  const userWithLoans = userData.filter(data => parseInt(data?.education?.loanRepayment) > 0).length
+  const userWithSavings = userData.filter(data => parseInt(data?.accountBalance) > 500).length
+  const activeUsers = userData.filter(data => moment(data?.lastActiveDate).diff(currentDate, 'days') > 7).length
+  const cardData = [
+    {
+      icon: img1,
+      title: 'Users',
+      value: userData.length
+    },
+    {
+      icon: img2,
+      title: 'Active Users',
+      value: activeUsers,
+    },
+    {
+      icon: img3,
+      title: 'Users with Loans',
+      value: userWithLoans,
+    },
+    {
+      icon: img4,
+      title: 'Users with Savings',
+      value: userWithSavings,
+    }
+  ];
 
   useEffect(() => {
     fetchData()
@@ -37,7 +67,7 @@ const Users = () => {
       <h2>Users</h2>
 
       <div className='dataCards'>
-        {dataCards.map((dataCard, index) => {
+        {cardData.map((dataCard, index) => {
           return <Card key={index} dataOptions={dataCard} />
         })}
       </div>

@@ -12,8 +12,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       }
     };
 
-    console.log([...Array(totalPages)], currentPage, totalPages)
-  
     return (
       <div className="pagination">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
