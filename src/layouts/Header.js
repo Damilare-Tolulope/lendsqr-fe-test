@@ -22,10 +22,9 @@ const Header = () => {
           <button><HiSearch /></button> */}
         </div>
           <div className='img-profile'>
-              <Link className='hideOnSmall' to="/">Docs</Link>
               <BsBell />
               <img className='img_logo' src={profilePic} alt="profile" />
-              <p>Adedeji <IoMdArrowDropdown/> </p>
+              <p>Adedeji </p>
           </div>
     </header>
   )

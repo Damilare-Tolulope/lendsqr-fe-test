@@ -58,13 +58,12 @@ const Table = ({headings, bodyData}) => {
                     {
                         currentData.map(({orgName, userName, email, phoneNumber, createdAt, id }) => {
                             return (
-                                <tr onClick={() => navigate(`/${id}`)} key={id}>
+                                <tr style={{ cursor: "pointer" }} onClick={() => navigate(`/${id}`)} key={id}>
                                     <td>{orgName}</td>
                                     <td>{userName}</td>
                                     <td>{email}</td>
                                     <td>{phoneNumber.split(' x')[0]}</td>
                                     <td>{moment(createdAt).format('lll')}</td>
-                                    <td><img ref={setReferrenceElement} src={more} alt="more" /></td>
                                 </tr>
                             )
                         })}
