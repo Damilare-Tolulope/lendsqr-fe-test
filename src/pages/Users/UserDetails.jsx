@@ -92,7 +92,7 @@ const UserDetails = () => {
                     </div>
                     <div className='detailsInfo'>
                         <span>Phone Number</span>
-                        <p>{userData.profile.phoneNumber}</p>
+                        <p>{userData.profile.phoneNumber.split(' ')[0]}</p>
                     </div>
                     <div className='detailsInfo'>
                         <span>Email Address</span>
@@ -175,7 +175,7 @@ const UserDetails = () => {
                     </div>
                     <div className='detailsInfo'>
                         <span>Phone Number</span>
-                        <p>{userData.guarantor.phoneNumber}</p>
+                        <p>{userData.guarantor.phoneNumber.split(' x')[0]}</p>
                     </div>
                     <div className='detailsInfo'>
                         <span>Email Address</span>
