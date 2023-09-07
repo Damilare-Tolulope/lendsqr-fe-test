@@ -34,6 +34,7 @@ const Users = () => {
   const userWithLoans = userData.filter(data => parseInt(data?.education?.loanRepayment) > 0).length
   const userWithSavings = userData.filter(data => parseInt(data?.accountBalance) > 500).length
   const activeUsers = userData.filter(data => moment(data?.lastActiveDate).diff(currentDate, 'days') > 7).length
+  
   const cardData = [
     {
       icon: img1,
